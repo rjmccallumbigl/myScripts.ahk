@@ -11,6 +11,10 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 :*:@@::rjmccallumbigl
 Return
 
+; === - Separator
+:*:===::================================================
+Return
+
 ; ## - Phone number
 :*:##::123-456-7890
 Return
