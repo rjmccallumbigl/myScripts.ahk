@@ -25,12 +25,18 @@ Return
 	send %time%
 Return
 
+; ~~ - Current time (UTC)
+:*:!utc::
+FormatTime, time, % A_NowUTC, ddd_MM-dd-yyyy_hh-mmtt_UTC
+send %time%
+Return
+
 ; @home - Home address
 :*:@home::123 Fake Street
 Return
 
-; @city - City, State ZIP
-:*:@city::Charlotte, NC 28215
+; @city - City, State
+:*:@city::Charlotte, NC
 Return
 
 
@@ -101,3 +107,19 @@ MouseIsOver(WinTitle) {
 	MouseGetPos,,, Win
 return WinExist(WinTitle . " ahk_id " . Win)
 }
+
+; /* ========= */
+; /* Always on */
+; /* ========= */
+
+; https://www.autohotkey.com/boards/viewtopic.php?t=121878
+SetTimer, IdleCheck, 150000
+return
+
+IdleCheck:
+	if (A_TimeIdle > 120000) {
+		MouseMove, 10, 10,, R
+		Sleep, 100
+		MouseMove, -10, -10,, R
+	}
+return
